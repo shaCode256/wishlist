@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common'
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  items = [
+  items : WishItem[] = [
     new WishItem('Learn Angular'),
     new WishItem('Drink some coffee', true),
     new WishItem('Shower'),
@@ -20,4 +20,9 @@ export class AppComponent {
     new WishItem('Say a prayer')
   ];
   title = 'wishlist';
+
+  toggleItem(item : WishItem){
+    item.isComplete = !item.isComplete;
+    console.log(item);
+  }
 }
