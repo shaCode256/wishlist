@@ -5,6 +5,7 @@ import { WishItem } from '../shared/models/wishItem';
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
+import { WishFilterComponent } from './wish-filter/wish-filter.component';
 
 const filters = [
   (item: WishItem) => item,
@@ -15,7 +16,7 @@ const filters = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent, AddWishFormComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent, AddWishFormComponent, WishFilterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -28,10 +29,7 @@ export class AppComponent {
     new WishItem('Say a prayer')
   ];
 
-  listFilter: any = '0';
+  filter: any= () => {}
 
-  get visibleItems(): WishItem[] {
-    return this.items.filter(filters[this.listFilter])
-  };
-
+  title= "wish-list"
 }
