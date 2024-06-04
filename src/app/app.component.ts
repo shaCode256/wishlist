@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
+import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 
 const filters = [
   (item: WishItem) => item,
@@ -14,7 +15,7 @@ const filters = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent, AddWishFormComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -33,11 +34,4 @@ export class AppComponent {
     return this.items.filter(filters[this.listFilter])
   };
 
-  newWishText = '';
-  title = 'wishlist';
-
-  addNewWish() {
-    this.items.push(new WishItem(this.newWishText))// add wish to items array
-    this.newWishText = ''; // clear the textbox
-  }
 }
