@@ -1,3 +1,4 @@
+import { WishListComponent } from './wish-list/wish-list.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
@@ -13,7 +14,7 @@ const filters = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule],
+  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -38,10 +39,5 @@ export class AppComponent {
   addNewWish() {
     this.items.push(new WishItem(this.newWishText))// add wish to items array
     this.newWishText = ''; // clear the textbox
-  }
-
-  toggleItem(item: WishItem) {
-    item.isComplete = !item.isComplete;
-    console.log(item);
   }
 }
