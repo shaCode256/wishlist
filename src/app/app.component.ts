@@ -1,3 +1,4 @@
+import { WishListItemComponent } from './wish-list-item/wish-list-item.component';
 import { WishListComponent } from './wish-list/wish-list.component';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -16,7 +17,7 @@ const filters = [
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent, AddWishFormComponent, WishFilterComponent],
+  imports: [RouterOutlet, CommonModule, FormsModule, WishListComponent, AddWishFormComponent, WishFilterComponent, WishListItemComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
