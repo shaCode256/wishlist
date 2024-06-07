@@ -29,7 +29,7 @@ export class AppComponent {
     new WishItem('Say a prayer')
   ];
 
-  filter: any= () => {}
+  filter: any;
 
   title= "wish-list"
 }
