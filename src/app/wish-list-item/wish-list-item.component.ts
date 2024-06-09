@@ -13,9 +13,8 @@ import events from '../../shared/services/EventService'
 })
 export class WishListItemComponent implements OnInit {
 
-  @Input() wishText!: string;
-  @Input() fullfilled!: boolean;
-  @Output() fullfilledChange = new EventEmitter<boolean>();
+  @Input() wish!: WishItem;
+
   constructor() { }
 
   ngOnInit(): void {
@@ -23,15 +22,14 @@ export class WishListItemComponent implements OnInit {
   }
 
   get cssClasses() {
-    return { 'strikeout text-muted': this.fullfilled }
+    return { 'strikeout text-muted': this.wish.isComplete }
   }
 
   removeWish(){
-    events.emit('removeWish', this.wishText);
+    events.emit('removeWish', this.wish);
   }
 
   toggleFullfilled() {
-    this.fullfilled = !this.fullfilled;
-    this.fullfilledChange.emit(this.fullfilled);
+    this.wish.isComplete = !this.wish.isComplete;
   }
 }
