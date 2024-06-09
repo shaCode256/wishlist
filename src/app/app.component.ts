@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish-filter/wish-filter.component';
+import events from '../shared/services/EventService'
 
 const filters = [
   (item: WishItem) => item,
@@ -29,6 +30,12 @@ export class AppComponent {
     new WishItem('Grab laundry'),
     new WishItem('Say a prayer')
   ];
+
+  constructor(){
+    events.listen('removeWish', (wish: any) => {
+      console.log(wish);
+    })
+  }
 
   filter: any;
 
