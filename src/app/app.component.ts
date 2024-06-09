@@ -1,13 +1,13 @@
 import { WishListItemComponent } from './wish-list-item/wish-list-item.component';
 import { WishListComponent } from './wish-list/wish-list.component';
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { WishItem } from '../shared/models/wishItem';
 import { CommonModule } from '@angular/common'
 import { FormsModule } from '@angular/forms';
 import { AddWishFormComponent } from './add-wish-form/add-wish-form.component';
 import { WishFilterComponent } from './wish-filter/wish-filter.component';
-import events from '../shared/services/EventService'
+import { EventService} from '../shared/services/EventService'
 
 const filters = [
   (item: WishItem) => item,
@@ -31,7 +31,7 @@ export class AppComponent {
     new WishItem('Say a prayer')
   ];
 
-  constructor(){
+  constructor(events: EventService){
     events.listen('removeWish', (wish: any) => {
       // console.log(wish);
       let index= this.items.indexOf(wish);
