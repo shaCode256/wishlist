@@ -1,0 +1,22 @@
+    [
+        {
+            "wishText": "Learn Angular!",
+            "isComplete": false
+        },
+        {
+            "wishText": "Drink some coffee",
+            "isComplete": true
+        },
+        {
+            "wishText": "Shower",
+            "isComplete": false
+        },
+        {
+            "wishText": "Grab laundry",
+            "isComplete": false
+        },
+        {
+            "wishText": "Say a prayer",
+            "isComplete": false
+        }
+    ]
