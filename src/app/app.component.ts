@@ -16,7 +16,6 @@ const filters = [
   (item: WishItem) => !item.isComplete,
   (item: WishItem) => item.isComplete
 ]
-
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -25,23 +24,29 @@ const filters = [
   styleUrl: './app.component.css' 
 })
 export class AppComponent implements OnInit {
-  items!: WishItem[];
+  items : WishItem[] = [];
 
   constructor(events: EventService, private wishService: WishService) {
-    events.listen('removeWish', (wish: any) => {
-      // console.log(wish);
+    events.listen('removeWish', (wish : any) => {
+      // todo remove wish from items
       let index = this.items.indexOf(wish);
       this.items.splice(index, 1);
     })
   }
 
   ngOnInit(): void {
-    this.wishService.getWishes().subscribe((data: any) => {
-      this.items = data;
-    })
+    this.wishService.getWishes().subscribe(
+      (data : any) => {
+        this.items = data;
+      },
+      (error : any) => {
+        alert(error.message);
+      }
+    );
   }
 
-  filter: any;
+  
+  filter: any; 
 
-  title = "wish-list"
+    title = "wish-list"
 }
